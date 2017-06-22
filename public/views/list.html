@@ -1,0 +1,48 @@
+<div ng-controller="todoCtrl as todo" class="content">
+     <div class="heading">
+        <h1>{{todo.name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <input class="form-control" ng-model="todo.task" type="text"/>
+        </div>
+        <div class="col-xs-5">
+            <button class="btn btn-block btn-default btn-lg" ng-if="!todo.editMode" ng-click="todo.task && todo.addTask()"><span class="glyphicon glyphicon-plus"></span> Add Task</button>
+            <button class="btn btn-block btn-primary btn-lg" ng-if="todo.editMode" ng-click="todo.task && todo.updateTask()"><span class="glyphicon glyphicon-floppy-saved"></span> Update Task</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            <h5>{{todo.count}}/{{todo.tasks.length}} tasks completed</h5>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item" ng-class="{'list-group-item-success':task.status, 'list-group-item-primary':!task.status}" ng-repeat="task in todo.tasks track by $index">
+                <div class="row">
+                    <div class="col-xs-6"><button class="btn btn-xs"><span ng-class="{'glyphicon glyphicon-hourglass':!task.status, 'glyphicon glyphicon-ok-sign':task.status}"></span></button>
+                            {{task.title}}
+                    </div>
+                    <div class="row col-xs-6">
+                        <div class="col-xs-2 col-xs-offset-2 nopadding">
+                            <button class="btn btn-block" ng-click="todo.moveUp(task.id)"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                        </div>
+                        <div class="col-xs-2 nopadding">
+                            <button class="btn btn-block" ng-click="todo.moveUp(task.id)"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                        <div class="col-xs-2 nopadding">
+                            <button class="btn btn-block" ng-class="{'btn-warning':!task.status, 'btn-success':task.status}" ng-click="todo.setStatus(task.id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><!--{{task.status ? 'Completed' : 'Mark as Done'}}--></button>
+                        </div>                          
+                        <div class="col-xs-2 nopadding">
+                            <button class="btn btn-block btn-info" ng-click="todo.editTask(task.id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                        </div>
+                        <div class="col-xs-2 nopadding">
+                            <button class="btn btn-block btn-danger" ng-click="todo.deleteTask(task.id)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>                                  
+                    </div>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

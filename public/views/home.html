@@ -1,0 +1,29 @@
+<div ng-controller="homeCtrl as home" class="content">
+    <div class="heading">
+        <h1>todo lists</h1>    
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <input type="text" class="form-control" ng-model="home.list"/>             
+        </div>
+        <div class="col-xs-5">
+            <button class="btn btn-block btn-default btn-lg" ng-click="home.add()"><span class="glyphicon glyphicon-plus"></span>Add List</button>        
+        </div>
+        
+        <!--<ul ng-repeat="list in home.lists">
+                <li><a href="#!/list/{{list.name}}">{{list.name}}</a></li>
+        </ul>-->
+    </div>
+    <div class="row">
+        <div class="col-xs-3" ng-repeat="list in home.lists">
+            <a href="#!/list/{{list.name}}">
+            <div class="card">
+                <img src="pattern.jpg" alt="image" style="width:100%"/>                
+                    <div class="container">
+                        <h4><b>{{list.name}}</b></h4>
+                    </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
