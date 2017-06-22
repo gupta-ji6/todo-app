@@ -13,10 +13,19 @@ todoList.controller("homeCtrl", function($firebaseArray) {
     var list = $firebaseArray(listRef);
     this.lists = list;
     
-    this.add = function() {
+    this.addList = function() {
         this.lists.$add({"name":this.list});
         this.list = "";
     }
+
+    this.removeList = function(name) {
+        for (var i=0;i<this.lists.length;i++) {
+            if (this.lists[i].name == name)
+                break;
+        }
+        this.lists.$remove(name);
+        console.log(this.lists);
+    };
 });
 
 todoList.controller("todoCtrl", function($firebaseArray, $routeParams) {

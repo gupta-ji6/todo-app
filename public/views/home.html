@@ -7,7 +7,7 @@
             <input type="text" class="form-control" ng-model="home.list"/>             
         </div>
         <div class="col-xs-5">
-            <button class="btn btn-block btn-default btn-lg" ng-click="home.add()"><span class="glyphicon glyphicon-plus"></span> Add List</button>        
+            <button class="btn btn-block btn-default btn-lg" ng-click="home.addList()"><span class="glyphicon glyphicon-plus"></span> Add List</button>        
         </div>
         
         <!--<ul ng-repeat="list in home.lists">
@@ -18,12 +18,20 @@
         <div class="col-xs-3" ng-repeat="list in home.lists">
             <a href="#!/list/{{list.name}}">
             <div class="card">
-                <img src="pattern.jpg" alt="image" style="width:100%"/>                
-                    <div class="container">
-                        <h4><b>{{list.name}}</b></h4>
-                    </div>
+                <img src="images/pattern.jpg" alt="image" style="width:100%"/>                
+                    <!--<div class="container">-->
+                        <div class="row">
+                            <div class="col-xs-8">
+                               <h4><b>{{list.name}}</b></h4> 
+                            </div>
+                            </a>
+                            <div class="col-xs-4">
+                                <button class="btn btn-block btn-danger btn-xs" ng-click="home.removeList(list.name)"><span class="glyphicon glyphicon-remove"></span></button>
+                            </div>
+                        </div>
+                        
+                    <!--</div>-->
             </div>
-            </a>
         </div>
     </div>
 </div>
