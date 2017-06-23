@@ -96,6 +96,7 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
     
 
     this.deleteTask = function(id) {
+        confirm("Are you sure you want to delete "+this.tasks+" task?");
         for(var i=0;i<this.tasks.length;i++) {
             if(this.tasks[i].id == id)
                 break;
