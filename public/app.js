@@ -2,41 +2,85 @@ var todoList = angular.module("todoApp",['ngRoute','firebase'])
 
 todoList.config(function($routeProvider) {
     $routeProvider
-        .when("/",{templateUrl:"views/home.html"})
+        .when("/",{templateUrl:"views/login.html"})
+        .when("/home",{templateUrl:"views/home.html"})
         .when("/list/:listname",{templateUrl:"views/list.html"})
         .otherwise({redirectTo:"/"})
 });
 
+todoList.controller("loginCtrl", function($firebaseAuth, $location) {
+    var auth =  $firebaseAuth();
 
-todoList.controller("homeCtrl", function($firebaseArray) {
-    var listRef = firebase.database().ref("lists");
+    this.loginWithGoogle = function() {
+        var promise = auth.$signInWithPopup("google");
+
+
+        promise.then(function(result) {
+        console.log("Signed in as:", result);
+        this.user = result.user;
+        $location.path("/home");
+        })
+        .catch(function(error) {
+        console.error("Authentication failed:", error);
+        });
+    };
+
+    this.loginWithFacebook = function() {
+        var promise = auth.$signInWithPopup("facebook");
+
+
+        promise.then(function(result) {
+        console.log("Signed in as:", result);
+        this.user = result.user;
+        $location.path("/home");
+        })
+        .catch(function(error) {
+        console.error("Authentication failed:", error);
+        });
+    };
+});
+
+todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
+    var auth =  $firebaseAuth();
+    this.user = auth.$getAuth();
+    var listRef = firebase.database().ref(this.user.uid+"/lists");
     var list = $firebaseArray(listRef);
     this.lists = list;
+    
     
     this.addList = function() {
         this.lists.$add({"name":this.list});
         this.list = "";
     }
 
-    this.removeList = function(name) {
-        for (var i=0;i<this.lists.length;i++) {
-            if (this.lists[i].name == name)
-                break;
-        }
-        this.lists.$remove(name);
+    this.removeList = function(i) {
+        confirm("Are you sure you want to delete "+this.list+" list?");
+        console.log(i);
+        this.lists.$remove(i);
         console.log(this.lists);
     };
+
 });
 
-todoList.controller("todoCtrl", function($firebaseArray, $routeParams) {
+todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routeParams) {
+    var auth =  $firebaseAuth();
+    this.user = auth.$getAuth();
     this.tasks = [];
     this.name=$routeParams.listname;
-    var taskRef = firebase.database().ref('tasks').child(this.name);
+    var taskRef = firebase.database().ref(this.user.uid+'/tasks').child(this.name);
     this.tasks = $firebaseArray(taskRef);
     this.editMode = false;
     this.savedIndex = 0;
     this.currentID = 0;
     this.count = 0;
+
+    // this.tasks.$loaded().then(function() {
+    //     // for (var i=0;i<this.tasks.length;i++) {
+    //     //     if (this.tasks[i].status)
+    //     //         this.count = this.count + 1;
+    //     // }
+    //     console.log("working")
+    // });
 
     this.addTask = function() {
         var obj = {};

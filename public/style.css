@@ -149,3 +149,124 @@ button.btn.btn.btn-danger.btn-xs:hover {
 img {
     border-radius: 5px 5px 0 0;
 }
+
+/*login page*/
+
+.login-box {
+    background: #fff;
+    padding: 20px;
+    max-width: 480px;
+    margin: 25vh auto;
+    text-align: center;
+    position: relative;
+    border-radius: 15px;
+}
+
+.login-box:hover {
+	  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.login-box h2 {
+    margin: 20px 0 60px 0;
+    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 40px;
+    color: #4688F1;
+}
+
+.google-icon {
+    background: url(images/google-icon.png) no-repeat;
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#google {
+    width: 380px;
+    height: 50px;
+    border: 2px solid #4285F4;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: white; 
+    margin: 10px auto;
+}
+
+#google:hover {
+      background-color: #4285F4;
+      color: white; 
+}
+
+.facebook-icon {
+    background: url(images/facebook-icon.png) no-repeat;
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#facebook {
+    width: 380px;
+    height: 50px;
+    border: 2px solid #3B5998;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: white;
+    margin: 10px auto; 
+}
+
+#facebook:hover {
+      background-color: #3B5998;
+      color: white; 
+}
+
+.twitter-icon {
+    background: url(images/twitter-icon.png) no-repeat;
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#twitter {
+    width: 380px;
+    height: 50px;
+    border: 2px solid #1DA1F2;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: white;
+    margin: 10px auto; 
+}
+
+#twitter:hover {
+      background-color: #1DA1F2;
+      color: white; 
+}
+
+.github-icon {
+    background: url(images/github-icon.png) no-repeat;
+    float: left;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#github {
+    width: 380px;
+    height: 50px;
+    border: 2px solid #24292E;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: white;
+    margin: 10px auto; 
+}
+
+#github:hover {
+      background-color: #24292E;
+      color: white; 
+}
