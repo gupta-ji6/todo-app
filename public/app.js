@@ -38,6 +38,34 @@ todoList.controller("loginCtrl", function($firebaseAuth, $location) {
         console.error("Authentication failed:", error);
         });
     };
+
+    this.loginWithTwitter = function() {
+        var promise = auth.$signInWithPopup("twitter");
+
+
+        promise.then(function(result) {
+        console.log("Signed in as:", result);
+        this.user = result.user;
+        $location.path("/home");
+        })
+        .catch(function(error) {
+        console.error("Authentication failed:", error);
+        });
+    };
+
+    this.loginWithGithub = function() {
+        var promise = auth.$signInWithPopup("github");
+
+
+        promise.then(function(result) {
+        console.log("Signed in as:", result);
+        this.user = result.user;
+        $location.path("/home");
+        })
+        .catch(function(error) {
+        console.error("Authentication failed:", error);
+        });
+    };
 });
 
 todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
