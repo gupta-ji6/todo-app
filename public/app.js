@@ -82,10 +82,11 @@ todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
     }
 
     this.removeList = function(i) {
-        confirm("Are you sure you want to delete "+this.list+" list?");
-        console.log(i);
-        this.lists.$remove(i);
-        console.log(this.lists);
+        if(confirm("Are you sure you want to delete "+this.lists+" list?")) {
+           console.log(i);
+            this.lists.$remove(i);
+            console.log(this.lists); 
+        }
     };
 
 });
@@ -124,13 +125,14 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
     
 
     this.deleteTask = function(id) {
-        confirm("Are you sure you want to delete "+this.tasks+" task?");
-        for(var i=0;i<this.tasks.length;i++) {
-            if(this.tasks[i].id == id)
-                break;
+        if(confirm("Are you sure you want to delete "+this.tasks+" task?")) {
+            for(var i=0;i<this.tasks.length;i++) {
+                if(this.tasks[i].id == id)
+                    break;
+            }
+            this.tasks.$remove(i);
+            console.log(this.tasks);
         }
-        this.tasks.$remove(i);
-        console.log(this.tasks);
     }
 
     this.editTask = function(id) {
