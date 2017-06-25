@@ -62,9 +62,12 @@
 a.navbar-brand {
     text-align: center;
     font-family: 'Sacramento', cursive;
-    color: black;
     font-size: 4em;
     margin: 15px;
+}
+
+.nav {
+    color: white;
 }
 
 input.form-control {
@@ -80,13 +83,14 @@ button#searchButton.btn-btn-default {
 }
 
 .navbar {
-    background: white;
+    background: #330867;
 	box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 
 a.dropdown-toggle {
     padding: 2px;
     margin-right: 10px; 
+    color: white;
 }
 
 /*.brand {
