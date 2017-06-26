@@ -15,9 +15,10 @@
 /*task completeion counter*/
 .col-xs-offset-4.col-xs-4 h5 {
     text-align: center;
-    border: 1.5px dashed black;
+    border: 1.5px dashed white;
     border-radius: 10px;
     padding: 5px;
+    color: white;
 }
 /*lits heading*/
 .col-xs-8 h4 {
@@ -47,10 +48,10 @@
     margin: 10px;
 }
 
-.nopadding {
+/*.nopadding {
     padding: 0.5;
     margin: 0.5;
-}
+}*/
 
 .navbar-center {
     position: absolute;
@@ -93,6 +94,22 @@ a.dropdown-toggle {
     color: white;
 }
 
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: white;
+}
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+    height: 34px;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover {
+    color: white;
+}
 /*.brand {
     width: 50px;
     height: 50px;
@@ -180,30 +197,45 @@ body {
     border-color: #ffffff #ffffff #ffffff;
 }
 
-/*Edit Task*/
+/*Pending Task*/
 
-.col-xs-2.nopadding.btn.btn-warning {
-    color: #ffffff;
-    background-color: #F0AD4E;
-    background-image: linear-gradient(to bottom, #ffc400, #ffc400);
+.btn.btn-warning {
+    color: #000000;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
     border-color: #ffffff #ffffff #ffffff;
 }
-.col-xs-2.nopadding.btn.btn-warning:hover {
+.btn.btn-warning:hover {
+    color: #000000;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+    border-color: #ffffff #ffffff #ffffff;
+}
+
+/*Completed Task*/
+
+.btn.btn-success {
     color: #ffffff;
-    background-color: #ffc400;
-    background-image: linear-gradient(to bottom, #ffc400, #ffc400);
+    background-color: #419641;
+    background-image: linear-gradient(to bottom, #419641, #419641);
+    border-color: #ffffff #ffffff #ffffff;
+}
+.btn.btn-success:hover {
+    color: #ffffff;
+    background-color: #419641;
+    background-image: linear-gradient(to bottom, #419641, #419641);
     border-color: #ffffff #ffffff #ffffff;
 }
 
 /*Delete Task*/
 
-.col-xs-2.nopadding.btn.btn-danger {
+.col-xs-3.btn.btn-danger {
     color: #ffffff;
     background-color: #ff00ff;
     background-image: linear-gradient(to bottom, #ff5e61, #ff070b);
     border-color: #ffffff #ffffff #ffffff;
 }
-.col-xs-2.nopadding.btn.btn-danger:hover {
+.col-xs-3.btn.btn-danger:hover {
     color: #ffffff;
     background-color: #ff070b;
     background-image: linear-gradient(to bottom, #ff070b, #ff070b);
