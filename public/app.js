@@ -11,6 +11,15 @@ todoList.config(function($routeProvider) {
 todoList.controller("loginCtrl", function($firebaseAuth, $location) {
     var auth =  $firebaseAuth();
 
+    // autologin
+    auth.$onAuthStateChanged(function(user) {
+            if (user) {
+                $location.path("/home");
+            } else {
+            $location.path("/"); 
+            }
+        });
+
     this.loginWithGoogle = function() {
         var promise = auth.$signInWithPopup("google");
 
