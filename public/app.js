@@ -82,7 +82,7 @@ todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
     }
 
     this.removeList = function(i) {
-        if(confirm("Are you sure you want to delete "+this.lists+" list?")) {
+        if(confirm("Are you sure you want to delete "+this.lists[i].name+" list?")) {
            console.log(i);
             this.lists.$remove(i);
             console.log(this.lists); 
@@ -125,15 +125,15 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
     
 
     this.deleteTask = function(id) {
-        if(confirm("Are you sure you want to delete "+this.tasks+" task?")) {
             for(var i=0;i<this.tasks.length;i++) {
                 if(this.tasks[i].id == id)
                     break;
             }
-            this.tasks.$remove(i);
+            if(confirm("Are you sure you want to delete "+this.tasks[i].title+" task?")) {
+                this.tasks.$remove(i);
+            }
             console.log(this.tasks);
         }
-    }
 
     this.editTask = function(id) {
         for(var i=0;i<this.tasks.length;i++) {
@@ -171,11 +171,11 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
 
     this.moveUp = function(id) {
             for(var i=0; i<this.tasks.length; i++) {
-                if(this.tasks[i].id == id && i!=0) {
+                if(i!=0 && this.tasks[i].id == id) {
                     
-                    var temp = this.tasks[i-1].name;
-                    this.tasks[i-1].name = this.tasks[i].name;
-                    this.tasks[i].name = temp;
+                    var temp = this.tasks[i-1].title;
+                    this.tasks[i-1].title = this.tasks[i].title;
+                    this.tasks[i].title = temp;
                     
                     var temp = this.tasks[i-1].id;
                     this.tasks[i-1].id = this.tasks[i].id;
@@ -194,11 +194,11 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
 
         this.moveDown = function(id) {
         for(var i=0; i<this.tasks.length; i++) {
-            if(this.tasks[i].id == id && j!=this.tasks.length-1) {
+            if(i!=this.tasks.length-1 && this.tasks[i].id == id) {
                 
-                var temp = this.tasks[i+1].name;
-                this.tasks[i+1].name = this.tasks[i].name;
-                this.tasks[i].name = temp;
+                var temp = this.tasks[i+1].title;
+                this.tasks[i+1].title = this.tasks[i].title;
+                this.tasks[i].title = temp;
                 
                 var temp = this.tasks[i+1].id;
                 this.tasks[i+1].id = this.tasks[i].id;
