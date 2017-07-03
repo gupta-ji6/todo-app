@@ -21,7 +21,7 @@ That's all.
 Congrats! You've become productive.
 
 # <a name="live-project"></a> Live Project
-The Todo App project is live. <a href="https://todo-app-202dd.firebaseapp.com">Link.</a> 
+The Todo App project is live <a href="https://todo-app-202dd.firebaseapp.com">here.</a> 
 
 # <a name="features"></a>Features
 * Easy Sign in
