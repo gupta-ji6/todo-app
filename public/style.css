@@ -88,6 +88,18 @@ button#searchButton.btn-btn-default {
 	box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 } 
 
+#single-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    background: #330867;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#single-button:hover {
+    background: #32508D;
+}
+
 a.dropdown-toggle {
     padding: 2px;
     margin-right: 10px; 

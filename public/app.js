@@ -1,4 +1,4 @@
-var todoList = angular.module("todoApp",['ngRoute','firebase'])
+var todoList = angular.module("todoApp",['ngRoute','firebase','ui.bootstrap'])
 
 todoList.config(function($routeProvider) {
     $routeProvider
@@ -77,7 +77,7 @@ todoList.controller("loginCtrl", function($firebaseAuth, $location) {
     };
 });
 
-todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
+todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth, $location) {
     var auth =  $firebaseAuth();
     this.user = auth.$getAuth();
     var listRef = firebase.database().ref(this.user.uid+"/lists");
@@ -96,6 +96,15 @@ todoList.controller("homeCtrl", function($firebaseArray, $firebaseAuth) {
             this.lists.$remove(i);
             console.log(this.lists); 
         }
+    };
+
+    this.signOut = function() {
+        firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        $location.path("/");
+        }).catch(function(error) {
+        // An error happened.
+        });
     };
 
 });
@@ -202,26 +211,36 @@ todoList.controller("todoCtrl", function($firebaseArray, $firebaseAuth ,$routePa
         }
 
         this.moveDown = function(id) {
-        for(var i=0; i<this.tasks.length; i++) {
-            if(i!=this.tasks.length-1 && this.tasks[i].id == id) {
-                
-                var temp = this.tasks[i+1].title;
-                this.tasks[i+1].title = this.tasks[i].title;
-                this.tasks[i].title = temp;
-                
-                var temp = this.tasks[i+1].id;
-                this.tasks[i+1].id = this.tasks[i].id;
-                this.tasks[i].id = temp;
+            for(var i=0; i<this.tasks.length; i++) {
+                if(i!=this.tasks.length-1 && this.tasks[i].id == id) {
+                    
+                    var temp = this.tasks[i+1].title;
+                    this.tasks[i+1].title = this.tasks[i].title;
+                    this.tasks[i].title = temp;
+                    
+                    var temp = this.tasks[i+1].id;
+                    this.tasks[i+1].id = this.tasks[i].id;
+                    this.tasks[i].id = temp;
 
-                var temp = this.tasks[i+1].status;
-                this.tasks[i+1].status = this.tasks[i].status;
-                this.tasks[i].status = temp;
+                    var temp = this.tasks[i+1].status;
+                    this.tasks[i+1].status = this.tasks[i].status;
+                    this.tasks[i].status = temp;
 
-                this.tasks.$save(i);
-                this.tasks.$save(i+1);
+                    this.tasks.$save(i);
+                    this.tasks.$save(i+1);
+                }
+
             }
-
         }
-    }
+        
+        this.signOut = function() {
+        firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        $location.path("/");
+        }).catch(function(error) {
+        // An error happened.
+        });
+    };
+
 
 });
