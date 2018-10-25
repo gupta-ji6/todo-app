@@ -13,7 +13,7 @@ Save a list of tasks for you to complete. Work hassle free bacause - the app rem
 
 # <a name="getting-started"></a>Getting Started
 <ol>
-` <li> Sign in using any of the provided services - Google, Facebook, Twitter or Github.</li>
+ <li> Sign in using any of the provided services - Google, Facebook, Twitter or Github.</li>
   <li> Add a list of tasks or open any previously saved list of tasks.</li>
   <li> Open the list you created and add tasks to it.</li>
 </ol>
