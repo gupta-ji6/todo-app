@@ -1,4 +1,7 @@
-# todo-app
+<p align="center"><img src="https://i.ibb.co/MsMxxrt/todo.png" height="250" width="250"></p>
+
+# ToDo App
+
 A ToDo List web app made in Angular JS.
 Save a list of tasks for you to complete. Work hassle free bacause - the app remembers.
 
